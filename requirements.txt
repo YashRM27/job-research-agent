@@ -4,4 +4,3 @@ langchain-groq
 litellm
 python-dotenv
 streamlit
-chromadb==0.4.22
