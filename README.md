@@ -1,14 +1,3 @@
-```markdown
----
-title: Job Application Assistant
-emoji: 🤖
-colorFrom: blue
-colorTo: red
-sdk: docker
-app_file: app.py
-pinned: false
----
-
 # 🤖 Job Application Assistant
 
 An AI-powered multi-agent system that generates a complete job application package using CrewAI and Groq LLM — in under 3 minutes.
@@ -100,4 +89,3 @@ streamlit run app.py
 - [ ] Support multiple output formats (PDF, DOCX)
 - [ ] Email sending integration
 - [ ] Job fit score based on resume vs job description
-```
