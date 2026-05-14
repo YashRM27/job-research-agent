@@ -1,3 +1,13 @@
+---
+title: Job Research Agent
+emoji: 🤖
+colorFrom: blue
+colorTo: red
+sdk: docker
+app_file: app.py
+pinned: false
+---
+
 # 🤖 Job Research Agent
 
 An AI-powered multi-agent system that automatically researches companies and generates personalized cover letters using CrewAI and Groq LLM.
