@@ -1,6 +1,7 @@
-crewai==0.28.8
-crewai-tools==0.1.7
+crewai==1.14.3
+crewai-tools==1.14.3
 langchain-groq
 litellm
 python-dotenv
 streamlit
+chromadb
