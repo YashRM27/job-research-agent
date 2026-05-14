@@ -1,5 +1,6 @@
+```markdown
 ---
-title: Job Research Agent
+title: Job Application Assistant
 emoji: 🤖
 colorFrom: blue
 colorTo: red
@@ -8,16 +9,18 @@ app_file: app.py
 pinned: false
 ---
 
-# 🤖 Job Research Agent
+# 🤖 Job Application Assistant
 
-An AI-powered multi-agent system that automatically researches companies and generates personalized cover letters using CrewAI and Groq LLM.
+An AI-powered multi-agent system that generates a complete job application package using CrewAI and Groq LLM — in under 3 minutes.
 
 ## 🎯 What it does
 
-- Takes a **company name**, **job role**, and **candidate name** as input
-- **Researcher Agent** searches the web for company info, culture, values, and job requirements in real time
-- **Writer Agent** uses that research to generate a tailored, professional cover letter
-- Saves the final cover letter to `cover_letter.txt`
+Input a company name, job role, and your name — 4 AI agents collaborate to generate:
+
+- 🔍 **Company Research Report** — culture, values, requirements, recent news
+- 📄 **Personalized Cover Letter** — 250-350 words, tailored to the company
+- 🎯 **Interview Prep** — 5 likely questions with tips on how to answer
+- 📧 **Formal Cold Email** — ready to send to the hiring manager on LinkedIn
 
 ## 🛠️ Tech Stack
 
@@ -25,8 +28,9 @@ An AI-powered multi-agent system that automatically researches companies and gen
 |---|---|
 | **CrewAI** | Multi-agent orchestration framework |
 | **Groq (LLaMA 3.3 70B)** | LLM for agent reasoning and writing |
-| **Serper API** | Real-time web search tool for agents |
+| **Serper API** | Real-time web search tool |
 | **LiteLLM** | LLM provider interface |
+| **Streamlit** | Interactive web UI |
 | **Python 3.11** | Core language |
 
 ## 🏗️ Project Structure
@@ -35,9 +39,10 @@ An AI-powered multi-agent system that automatically researches companies and gen
 job_research_agent/
 ├── src/
 │   ├── __init__.py
-│   ├── agents.py        # Agent definitions (Researcher + Writer)
-│   └── tasks.py         # Task definitions for each agent
-├── main.py              # Entry point
+│   ├── agents.py        # 4 Agent definitions
+│   └── tasks.py         # 4 Task definitions
+├── app.py               # Streamlit UI
+├── main.py              # Terminal entry point
 ├── .env                 # API keys (not pushed to GitHub)
 ├── .gitignore
 ├── requirements.txt
@@ -47,27 +52,24 @@ job_research_agent/
 ## 🚀 How it works
 
 ```
-User Input (Company Name + Job Role + Candidate Name)
-                    ↓
-        Researcher Agent
-        → Searches web in real time
-        → Finds company overview, culture, values
-        → Finds job role requirements
-        → Finds recent company news
-                    ↓
-        Writer Agent
-        → Reads research output
-        → Crafts personalized cover letter
-        → 250-350 words, professional tone
-                    ↓
-        Output saved to cover_letter.txt
+User Input (Company + Role + Name)
+            ↓
+Researcher Agent → Searches web → Research Report
+            ↓
+Writer Agent → Reads research → Cover Letter
+            ↓
+Coach Agent → Reads research → 5 Interview Questions + Tips
+            ↓
+Emailer Agent → Reads research → Formal Cold Email
+            ↓
+All 4 outputs displayed in Streamlit tabs
 ```
 
 ## ⚙️ Setup & Installation
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/job-research-agent.git
+git clone https://github.com/YashRM27/job-research-agent.git
 cd job-research-agent
 ```
 
@@ -76,22 +78,15 @@ cd job-research-agent
 pip install -r requirements.txt
 ```
 
-### 3. Create a `.env` file in root folder
+### 3. Create a `.env` file
 ```
 GROQ_API_KEY=your_groq_api_key_here
 SERPER_API_KEY=your_serper_api_key_here
 ```
 
-### 4. Run the agent
+### 4. Run the Streamlit app
 ```bash
-python main.py
-```
-
-### 5. Follow the prompts
-```
-Enter company name: Google
-Enter job role: Data Scientist
-Enter your name: Yash Mavare
+streamlit run app.py
 ```
 
 ## 🔑 Get Free API Keys
@@ -99,29 +94,10 @@ Enter your name: Yash Mavare
 - **Groq API** (Free LLM): https://console.groq.com
 - **Serper API** (Free web search): https://serper.dev
 
-## 💡 Example Output
-
-```
-🤖 Welcome to Job Research Agent!
-
-🔍 Researching Google for Data Scientist role...
-
-[Researcher Agent working...]
-→ Searching company info
-→ Finding job requirements
-→ Gathering recent news
-
-[Writer Agent working...]
-→ Crafting personalized cover letter
-
-✅ Cover Letter Generated!
-📄 Cover letter saved to cover_letter.txt
-```
-
 ## 🔮 Future Improvements
 
-- [ ] Add resume PDF as input for more personalized letters
-- [ ] Add RAG to read candidate's own resume
-- [ ] Build a Streamlit UI for non-technical users
+- [ ] RAG — upload your resume PDF for more personalized output
 - [ ] Support multiple output formats (PDF, DOCX)
-- [ ] Add email sending functionality
+- [ ] Email sending integration
+- [ ] Job fit score based on resume vs job description
+```
