@@ -5,3 +5,4 @@ litellm
 python-dotenv
 streamlit
 chromadb
+rich>=13.7.0,<15.0.0
