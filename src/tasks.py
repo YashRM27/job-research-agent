@@ -2,7 +2,7 @@ from crewai import Task
 from src.agents import researcher, writer
 
 def create_tasks(company_name, job_role, candidate_name):
-
+    
     research_task = Task(
         description=f"""
         Research the following:
@@ -10,6 +10,7 @@ def create_tasks(company_name, job_role, candidate_name):
         2. What are the key requirements for {job_role} role
         3. Recent news or achievements of {company_name}
         4. What kind of candidates they typically look for
+        
         Be specific and detailed in your findings.
         """,
         expected_output="""A detailed research report covering:
@@ -22,19 +23,20 @@ def create_tasks(company_name, job_role, candidate_name):
 
     write_task = Task(
         description=f"""
-        Using the research provided, write a professional
-        cover letter for {candidate_name} applying for
+        Using the research provided, write a professional 
+        cover letter for {candidate_name} applying for 
         {job_role} position at {company_name}.
+        
         The letter should:
         - Be personalized to the company
         - Highlight relevant skills for the role
         - Be professional yet engaging
         - Be between 250-350 words
         """,
-        expected_output="""A complete professional cover letter
+        expected_output="""A complete professional cover letter 
         ready to send to the employer.""",
         agent=writer,
         context=[research_task]
     )
-
+    
     return [research_task, write_task]

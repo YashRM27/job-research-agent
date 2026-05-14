@@ -3,3 +3,4 @@ crewai-tools
 langchain-groq
 litellm
 python-dotenv
+streamlit
